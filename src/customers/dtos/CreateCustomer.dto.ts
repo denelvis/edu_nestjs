@@ -15,6 +15,6 @@ export class CreateCustomerDto {
 
   @IsNotEmptyObject()
   @ValidateNested()
-  @Type(() => CreateCustomerDto)
+  @Type(() => CreateAddressDto)
   address: CreateAddressDto;
 }

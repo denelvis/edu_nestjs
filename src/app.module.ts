@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CustomersModule } from './customers/customers.module';
 import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 import entities from './typeorm';
 
 @Module({
@@ -11,13 +12,14 @@ import entities from './typeorm';
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
-      port: 3333,
-      username: 'nestjs',
-      password: 'nestjs123',
+      port: 3306,
+      username: 'root',
+      password: 'qwerty123456',
       database: 'nestjs_edu',
       entities: entities,
       synchronize: true,
     }),
+    AuthModule,
   ],
   controllers: [],
   providers: [],

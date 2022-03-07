@@ -13,17 +13,20 @@ import {
   Body,
   UsePipes,
   ValidationPipe,
+  UseGuards,
 } from '@nestjs/common';
 import { SerializedUser } from 'src/users/types/User';
 import { UsersService } from './../../services/users/users.service';
 import { UserNotFoundException } from './../../exceptions/UserNotFound.exception';
 import { HttpExceptionFilter } from './../../filters/HttpException.filter';
 import { CreateUserDTO } from './../../dtos/CreateUser.dto';
+import { AuthenticateGuard } from 'src/auth/utils/LocalGuard';
 
 @Controller('users')
 export class UsersController {
   constructor(@Inject('USER_SERVICE') private readonly usersService: UsersService) {}
 
+  @UseGuards(AuthenticateGuard)
   @UseInterceptors(ClassSerializerInterceptor)
   @Get('')
   getUsers() {

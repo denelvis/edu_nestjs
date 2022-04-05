@@ -19,7 +19,7 @@ import { SerializedUser } from 'src/users/types/User';
 import { UsersService } from './../../services/users/users.service';
 import { UserNotFoundException } from './../../exceptions/UserNotFound.exception';
 import { HttpExceptionFilter } from './../../filters/HttpException.filter';
-import { CreateUserDTO } from './../../dtos/CreateUser.dto';
+import { CreateUserDto } from './../../dtos/CreateUser.dto';
 import { AuthenticateGuard } from 'src/auth/utils/LocalGuard';
 
 @Controller('users')
@@ -52,7 +52,7 @@ export class UsersController {
 
   @Post('create')
   @UsePipes(ValidationPipe)
-  createUser(@Body() createUserDto: CreateUserDTO) {
+  createUser(@Body() createUserDto: CreateUserDto) {
     return this.usersService.createUser(createUserDto);
   }
 }

@@ -15,12 +15,12 @@ import {
   ValidationPipe,
   UseGuards,
 } from '@nestjs/common';
-import { SerializedUser } from 'src/users/types/User';
+import { SerializedUser } from '../../../users/types/User';
 import { UsersService } from './../../services/users/users.service';
 import { UserNotFoundException } from './../../exceptions/UserNotFound.exception';
 import { HttpExceptionFilter } from './../../filters/HttpException.filter';
 import { CreateUserDto } from './../../dtos/CreateUser.dto';
-import { AuthenticateGuard } from 'src/auth/utils/LocalGuard';
+import { AuthenticateGuard } from '../../../auth/utils/LocalGuard';
 
 @Controller('users')
 export class UsersController {
